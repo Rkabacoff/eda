@@ -1,5 +1,5 @@
 Package: eda
-Title: What the Package Does (One Line, Title Case)
+Title: Exploratory data analysis
 Version: 0.0.1.0
 Authors@R: 
     person(given = "First",
@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "first.last@example.com",
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Description: Exploratory data analysis and visualization.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
