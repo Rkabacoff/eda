@@ -13,10 +13,6 @@
 #' (completely transparent) and 1 (completely opaque).
 #' @param digits Number of significant digits in displayed statistics.
 #' @param title Optional title.
-#' @param margin Marginal plots. If specified, parameter can be
-#' \code{histogram}, \code{boxplot}, \code{violin},
-#' or \code{density}. Will add these
-#' features to the top and right margin of the graph.
 #' @param stats logical. If \code{TRUE}, the slope,
 #' correlation, and correlation squared (expressed as a percentage) for the
 #' regression line are printed on the subtitle line.
@@ -24,8 +20,6 @@
 #' @param outlier_color Color used to identify outliers (see the \code{outlier}
 #' parameter.
 #' @param line_color Color for regression line.
-#' @param margin_color Fill color for margin boxplots, density plots, or
-#' histograms.
 #'
 #' @details
 #' The \code{scatter} function generates a scatterplot between two quantitative
@@ -41,26 +35,18 @@
 #' @return a ggplot2 graph
 #' @export
 #' @import ggplot2
-#' @import ggExtra
 #' @importFrom stats as.formula coefficients lm na.omit pf residuals rstudent
 #' @examples
 #' scatter(cars74, hp, mpg)
-#' scatter(cars74, wt, hp)
-#' p <- scatter(ggplot2::mpg, displ, hwy,
-#'         margin="histogram",
-#'         title="Engine Displacement vs. Highway Mileage")
-#' plot(p)
-scatter <- function(data, x, y,
+scatter <- function(data, y, x,
                     outlier=3,
                     alpha=1,
                     digits=3,
                     title,
-                    margin="none",
                     stats=TRUE,
                     point_color="deepskyblue2",
                     outlier_color="violetred1",
-                    line_color="grey30",
-                    margin_color="deepskyblue2"){
+                    line_color="grey30"){
 
   # import parameters
   x <- as.character(substitute(x))
@@ -142,11 +128,6 @@ scatter <- function(data, x, y,
   if (any(abs(data$stud.residuals) > outlier & outlier != 0)){
     p <- p + labs(caption=paste("Note: studentized residuals >",
                                 outlier, "are highlighted."))
-  }
-  # add margins
-  if(margin!="none"){
-    p <- ggExtra::ggMarginal(p, size=8, type=margin,
-                             fill=margin_color)
   }
 
   # return graph

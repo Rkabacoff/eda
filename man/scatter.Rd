@@ -6,26 +6,24 @@
 \usage{
 scatter(
   data,
-  x,
   y,
+  x,
   outlier = 3,
   alpha = 1,
   digits = 3,
   title,
-  margin = "none",
   stats = TRUE,
   point_color = "deepskyblue2",
   outlier_color = "violetred1",
-  line_color = "grey30",
-  margin_color = "deepskyblue2"
+  line_color = "grey30"
 )
 }
 \arguments{
 \item{data}{data frame}
 
-\item{x}{quantitative predictor variable}
-
 \item{y}{quantitative response variable}
+
+\item{x}{quantitative predictor variable}
 
 \item{outlier}{number. Observations with studentized residuals
 larger than this value are flagged. If set to 0, observations
@@ -38,11 +36,6 @@ are not flagged.}
 
 \item{title}{Optional title.}
 
-\item{margin}{Marginal plots. If specified, parameter can be
-\code{histogram}, \code{boxplot}, \code{violin},
-or \code{density}. Will add these
-features to the top and right margin of the graph.}
-
 \item{stats}{logical. If \code{TRUE}, the slope,
 correlation, and correlation squared (expressed as a percentage) for the
 regression line are printed on the subtitle line.}
@@ -53,9 +46,6 @@ regression line are printed on the subtitle line.}
 parameter.}
 
 \item{line_color}{Color for regression line.}
-
-\item{margin_color}{Fill color for margin boxplots, density plots, or
-histograms.}
 }
 \value{
 a ggplot2 graph
@@ -76,9 +66,4 @@ Variable names do not have to be quoted.
 }
 \examples{
 scatter(cars74, hp, mpg)
-scatter(cars74, wt, hp)
-p <- scatter(ggplot2::mpg, displ, hwy,
-        margin="histogram",
-        title="Engine Displacement vs. Highway Mileage")
-plot(p)
 }
